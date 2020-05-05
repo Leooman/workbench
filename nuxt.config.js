@@ -1,6 +1,7 @@
 
 export default {
   mode: 'spa',
+  globalName:process.env.npm_package_name,
   /*
   ** Headers of the page
   */
@@ -23,6 +24,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/normalize.css',
     'element-ui/lib/theme-chalk/index.css'
   ],
   /*
