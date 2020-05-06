@@ -63,6 +63,11 @@ module.exports = function (moduleOptions) {
     })
 
     this.addTemplate({
+        src: resolve(__dirname, 'router.js'),
+        fileName: 'router.js',
+        options
+    })
+    this.addTemplate({
         src: resolve(__dirname, 'client.js'),
         fileName: 'client.js',
         options
