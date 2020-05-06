@@ -25,13 +25,13 @@ export default {
   */
   css: [
     '@/assets/css/normalize.css',
-    'element-ui/lib/theme-chalk/index.css'
+    // 'element-ui/lib/theme-chalk/index.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    // '@/plugins/element-ui'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -44,18 +44,27 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '~/modules/qiankun'
   ],
+  MFE: {
+    force: true
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
   },
+  router: {
+    base: process.env.NODE_ENV === "production" ? '/workbench/' : '/',
+    __ROUTEPATH__: '/micro-frontends/nuxt'
+  },
   /*
   ** Build configuration
   */
   build: {
     transpile: [/^element-ui/],
+    publicPath: "//leooman.com/workbench",
     /*
     ** You can extend webpack config here
     */

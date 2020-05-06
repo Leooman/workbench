@@ -11,6 +11,8 @@
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  font-size: 12px;
+  font-family: Arial,Helvetica Neue,Microsoft YaHei,微软雅黑,思源黑体,华文仿宋,sans-serif;
 }
 
 /* Sections
