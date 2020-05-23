@@ -32,6 +32,7 @@ export default {
   */
   plugins: [
     // '@/plugins/element-ui'
+    '@/assets/lui.umd.min.js'
   ],
   /*
   ** Nuxt.js dev-modules

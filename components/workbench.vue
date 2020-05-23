@@ -26,9 +26,9 @@
   justify-content: flex-start;
   overflow: hidden;
   .ASIDECONTAINER {
-    flex: 0 0 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 100%;
-    background: #cccccc;
   }
   .MAINCONTAINER {
     flex: 1 1 auto;
@@ -39,17 +39,16 @@
     .WORKCONTAINER {
       flex: 1 1 auto;
       overflow: auto;
-      background: #eeeeee;
     }
     .LOGCONTAINER {
-      flex: 0 0 100px;
-      background: #aaaaaa;
+      flex-grow: 0;
+      flex-shrink: 0;
     }
   }
   .HELPCONTAINER {
-    flex: 0 0 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 100%;
-    background: #cccccc;
   }
 }
 </style>
