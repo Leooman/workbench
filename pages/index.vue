@@ -3,14 +3,18 @@
     <template slot="aside">
       <lhTabs position="right" fixWidth min>
           <lhTabPane label="操作区" class="chart_list">
-            <lhIcon v-for="icon in $charts" :key="icon" :icon="icon" class="chart_type"></lhIcon>
+            <lhDrag :transfer-data="{ type: icon }" v-for="icon in $charts" :key="icon">
+              <lhIcon :icon="icon" class="chart_type"></lhIcon>
+            </lhDrag>
           </lhTabPane>
       </lhTabs>
     </template>
     <template slot="work">
       <lhTabs>
           <lhTabPane label="工作区">
-            <lhChart ref="lhchart" :option="option"></lhChart>
+            <lhDrop class="drop_area" @drop="handleDrop">
+              <lhChart ref="lhchart" :option="option" v-if="type"></lhChart>
+            </lhDrop>
           </lhTabPane>
       </lhTabs>
     </template>
@@ -49,7 +53,8 @@ export default {
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: 'line'
         }]
-      }
+      },
+      type:null
     };
   },
   props: {},
@@ -58,8 +63,11 @@ export default {
   },
   methods:{
     resize(){
-      this.$nextTick(this.$refs.lhchart.update)
-    }
+      // this.$nextTick(this.$refs.lhchart.update)
+    },
+    handleDrop({ type }){
+      this.type = type
+    },
   }
 };
 </script>
@@ -82,5 +90,8 @@ export default {
     &:hover{
       background: rgba(155, 155, 155, 0.05);
     }
+  }
+  .drop_area{
+    height: 100%;
   }
 </style>
