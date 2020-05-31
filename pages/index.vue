@@ -13,6 +13,7 @@
       <lhTabs>
           <lhTabPane label="工作区">
             <lhDrop class="drop_area" @drop="handleDrop">
+              <lhDragBlank v-if="!type"></lhDragBlank>
               <lhChart ref="lhchart" :option="option" v-if="type"></lhChart>
             </lhDrop>
           </lhTabPane>
@@ -21,6 +22,7 @@
     <template slot="log">
       <lhTabs min fixHeight position="top">
           <lhTabPane label="通知区">
+            <lhLog :data="logs"></lhLog>
           </lhTabPane>
       </lhTabs>
     </template>
@@ -54,19 +56,26 @@ export default {
             type: 'line'
         }]
       },
-      type:null
+      type:null,
+      logs:[]
     };
   },
   props: {},
   mounted() {
-    this.resize()
+    
   },
   methods:{
-    resize(){
+    // resize(){
       // this.$nextTick(this.$refs.lhchart.update)
-    },
+    // },
     handleDrop({ type }){
       this.type = type
+      this.logs.push({
+        id:this.$utils.uuid(),
+        time:this.$utils.getMoment(),
+        mode:"info",
+        message:"test info log component"
+      })
     },
   }
 };
