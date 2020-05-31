@@ -37,25 +37,14 @@
 
 <script>
 import workbench from "@/components/workbench"
+import options from '@/mock'
 export default {
   components:{
     workbench,
   },
   data() {
     return {
-      option:{
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-      },
+      option:null,
       type:null,
       logs:[]
     };
@@ -70,11 +59,12 @@ export default {
     // },
     handleDrop({ type }){
       this.type = type
+      this.option = options[type]
       this.logs.push({
         id:this.$utils.uuid(),
         time:this.$utils.getMoment(),
         mode:"info",
-        message:"test info log component"
+        message:`test ${type} chart`
       })
     },
   }
@@ -94,10 +84,10 @@ export default {
     height: 30px;
     border: 1px solid rgb(220, 223, 230);
     padding: 5px;
-    color: rgb(220, 223, 230);
+    // color: rgb(220, 223, 230);
     cursor: pointer;
     &:hover{
-      background: rgba(155, 155, 155, 0.05);
+      background: rgba(7,71,166,0.15);
     }
   }
   .drop_area{
