@@ -1,5 +1,5 @@
 <template>
-  <workbench>
+  <workbench :class="POWERED_BY_QIANKUN ? 'topPadding' : ''">
     <template slot="aside">
       <lhTabs position="right" fixWidth min>
           <lhTabPane label="操作区" class="chart_list">
@@ -46,7 +46,9 @@ export default {
   },
   props: {},
   computed:{
-    
+    POWERED_BY_QIANKUN(){
+      return window.__POWERED_BY_QIANKUN__
+    }
   },
   mounted() {
     
@@ -89,5 +91,8 @@ export default {
     &:hover{
       background: rgba(7,71,166,0.15);
     }
+  }
+  .topPadding{
+    padding-top: 10px;
   }
 </style>
