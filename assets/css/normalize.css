@@ -14,6 +14,12 @@ html {
   font-size: 12px;
   font-family: Arial,Helvetica Neue,Microsoft YaHei,微软雅黑,思源黑体,华文仿宋,sans-serif;
 }
+html, body, #__workbench, #__layout{
+  height: 100%;
+}
+div#sub-app>div{
+  height: 100%;
+}
 
 /* Sections
    ========================================================================== */

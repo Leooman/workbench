@@ -19,8 +19,7 @@
 
 <style lang="scss" scoped>
 #workbench {
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
