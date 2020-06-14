@@ -3,19 +3,16 @@
     <template slot="aside">
       <lhTabs position="right" fixWidth min>
           <lhTabPane label="操作区" class="chart_list">
-            <lhDrag :transfer-data="{ type: icon }" v-for="icon in $charts" :key="icon">
-              <lhIcon :icon="icon" class="chart_type"></lhIcon>
+            <lhDrag :transfer-data="chart" v-for="chart in $chart" :key="chart.type">
+              <lhIcon :icon="chart.type" class="chart_type"></lhIcon>
             </lhDrag>
           </lhTabPane>
       </lhTabs>
     </template>
     <template slot="work">
-      <lhTabs>
+      <lhTabs noPadding>
           <lhTabPane label="工作区">
-            <lhDrop class="drop_area" @drop="handleDrop">
-              <lhDragBlank v-if="!type"></lhDragBlank>
-              <lhChart ref="lhchart" :option="option" v-if="type"></lhChart>
-            </lhDrop>
+            <lhGrid ref="lhGrid" @dragend="handleDragend"></lhGrid>
           </lhTabPane>
       </lhTabs>
     </template>
@@ -44,22 +41,22 @@ export default {
   },
   data() {
     return {
-      option:null,
-      type:null,
-      logs:[]
+      logs:[],
     };
   },
   props: {},
+  computed:{
+    
+  },
   mounted() {
     
   },
   methods:{
-    // resize(){
-      // this.$nextTick(this.$refs.lhchart.update)
-    // },
-    handleDrop({ type }){
-      this.type = type
-      this.option = options[type]
+    handleDragend(data){
+      const {type} = data
+      this.$refs.lhGrid.add(Object.assign({},data,{
+        option:options[type]
+      }))
       this.logs.push({
         id:this.$utils.uuid(),
         time:this.$utils.getMoment(),
@@ -67,6 +64,9 @@ export default {
         message:`test ${type} chart`
       })
     },
+  },
+  watch:{
+    
   }
 };
 </script>
@@ -89,8 +89,5 @@ export default {
     &:hover{
       background: rgba(7,71,166,0.15);
     }
-  }
-  .drop_area{
-    height: 100%;
   }
 </style>

@@ -1,3 +1,5 @@
+import beijing from 'echarts/map/json/province/beijing.json'
+echarts.registerMap('北京', beijing)
 export default {
     "backgroundColor": "#4f5555",
     "title": {

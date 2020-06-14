@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import { CHART,UTILS,components } from '@/assets/lui.umd.min'
-
-Vue.prototype.$charts = CHART
-Vue.prototype.$utils = UTILS
+import { constant,components } from '@/assets/lui.umd.min'
+Object.keys(constant).forEach(name => {
+    Vue.prototype[`$${name.toLowerCase()}`] = constant[name]
+})
 
 Object.keys(components).forEach(name => {
     Vue.component(name, components[name])

@@ -14,7 +14,10 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [{
+      src: 'https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js'
+    }]
   },
   /*
   ** Customize the progress-bar color
